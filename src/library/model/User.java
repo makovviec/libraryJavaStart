@@ -2,7 +2,7 @@ package library.model;
 
 import java.util.Objects;
 
-public abstract class User {
+public abstract class User implements CsvConvertible{
     private String firsName;
     private String lastName;
     private String pesel;

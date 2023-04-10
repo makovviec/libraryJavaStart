@@ -37,7 +37,3 @@ R
 "src/library/io/ConsolePrinter.java,c\6\c600c992bc83e564581d3bfd6ceaef57386c8d83
 S
 #src/library/app/LibraryControl.java,d\4\d470466d8f174b68f6182d39f4481e60e3e2b83a
-;
-Library.csv,c\2\c2433efa59d2f5e53856fb79a1b7ce23dcfe6db8
-A
-Library_users.csv,8\1\8114313a06f0f9438f8f168ddbd414c6243f0963
