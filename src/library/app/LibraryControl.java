@@ -52,7 +52,8 @@ public class LibraryControl {
 
     private void printUsers() {
         printer.printUsers(library.getSortedUsers(
-                (u1, u2) -> u1.getLastName().compareToIgnoreCase(u2.getLastName())
+//                (u1, u2) -> u1.getLastName().compareToIgnoreCase(u2.getLastName())
+                Comparator.comparing(User::getLastName, String.CASE_INSENSITIVE_ORDER)
         ));
     }
 
@@ -95,7 +96,8 @@ public class LibraryControl {
 
     private void printBooks() {
         printer.printBooks(library.getSortedPublications(
-                (p1, p2) -> p1.getTitle().compareToIgnoreCase(p2.getTitle())
+//                (p1, p2) -> p1.getTitle().compareToIgnoreCase(p2.getTitle());
+                Comparator.comparing(Publication::getTitle, String::compareToIgnoreCase)
         ));
     }
 
@@ -126,7 +128,8 @@ public class LibraryControl {
 
     private void printMagazines() {
         printer.printMagazines(library.getSortedPublications(
-                (p1, p2) -> p1.getTitle().compareToIgnoreCase(p2.getTitle())
+//                (p1, p2) -> p1.getTitle().compareToIgnoreCase(p2.getTitle())
+                Comparator.comparing(Publication::getTitle, String::compareToIgnoreCase)
         ));
     }
 
