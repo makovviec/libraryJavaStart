@@ -9,18 +9,22 @@ import java.util.*;
 public class Library implements Serializable {
 
     private Map<String, Publication> publications = new HashMap<>();
+    private Map<String, LibraryUser> users = new HashMap<>();
 
     public Collection<Publication> getSortedPublications(Comparator<Publication> comparator) {
         List<Publication> list = new ArrayList<>(publications.values());
         list.sort(comparator);
         return list;
     }
-    private Map<String, LibraryUser> users = new HashMap<>();
 
     public Collection<LibraryUser> getSortedUsers(Comparator<LibraryUser> comparator) {
         List<LibraryUser> list = new ArrayList<>(users.values());
         list.sort(comparator);
         return list;
+    }
+
+    public Optional<Publication> findPublicationByTitle(String title) {
+        return Optional.ofNullable(publications.get(title));
     }
 
     public Map<String, Publication> getPublications() {

@@ -6,8 +6,6 @@ import library.io.DataReader;
 import library.io.file.FileManager;
 import library.io.file.FileManagerBuilder;
 import library.model.*;
-import library.model.comparator.AlphabeticalTitleComparator;
-
 import java.util.Comparator;
 import java.util.InputMismatchException;
 
@@ -45,6 +43,7 @@ public class LibraryControl {
                 case DELETE_MAGAZINE -> removeMagazine();
                 case ADD_USER -> addUser();
                 case SHOW_USERS -> printUsers();
+                case FIND_PUBLICATION -> findPublication();
                 default -> printer.printLine("Wybrałeś błędną opcję. Wprowadź liczbę ponownie.");
             };
         } while (option != Option.EXIT);
@@ -164,6 +163,15 @@ public class LibraryControl {
         }
     }
 
+    private void findPublication() {
+        printer.printLine("Podaj tytuł publikacji:");
+        String title = dataReader.getString();
+        String notFoundMessage = "Brak publikacji o takim tytule";
+        library.findPublicationByTitle(title)
+                .map(Publication::toString)
+                .ifPresentOrElse(System.out::println, () -> System.out.println(notFoundMessage));
+    }
+
     private enum Option {
         EXIT(0, "wyjście z programu"),
         ADD_BOOK(1, "dodanie nowej książki"),
@@ -173,7 +181,8 @@ public class LibraryControl {
         DELETE_BOOK(5, "Usuń książkę"),
         DELETE_MAGAZINE(6, "Usuń czasopismo"),
         ADD_USER(7, "Dodaj czytelnika"),
-        SHOW_USERS(8, "Wyświetl czytelników");
+        SHOW_USERS(8, "Wyświetl czytelników"),
+        FIND_PUBLICATION(9, "Wyszukaj publikację");
 
         private final int value;
         private final String description;
